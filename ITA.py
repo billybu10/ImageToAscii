@@ -1,8 +1,28 @@
 #!/usr/bin/python
 
+import string
+from typing import final
 from PIL import Image, ImageOps
+import argparse
+
+parser = argparse.ArgumentParser()
 
 ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
+
+def fun_agumens():
+    parser.add_argument("inputFile", help="input file")
+    parser.add_argument("outputFile", help="output file")
+    parser.add_argument("finalWidth", type=int, help="width of final ascii art")
+    parser.add_argument("finalHeight", type=int, help="height of final ascii art")
+    args = parser.parse_args()
+    global inputFile
+    inputFile = args.inputFile
+    global outputFile
+    outputFile = args.outputFile
+    global finalWidth
+    finalWidth = args.finalWidth
+    global finalHeight
+    finalHeight = args.finalHeight
 
 def fun_readFile(inputFile):
     try:
@@ -31,10 +51,7 @@ def fun_write(asciiImage, outputFile):
         f.write(asciiImage)
 
 def main():
-    inputFile = input("Enter input file: ")
-    outputFile = input("Enter output file: ")
-    finalWidth = int(input("Enter output file width: "), 10)
-    finalHeight = int(input("Enter output file height: "), 10)
+    fun_agumens()
     asciiImage = fun_char(fun_greysc(fun_size(fun_readFile(inputFile), finalWidth, finalHeight)), finalWidth)
     print(asciiImage)
     fun_write(asciiImage, outputFile)
