@@ -1,6 +1,5 @@
 # ImageToASCII
-As the name suggests, this program converts image to ascii art.
-(perfect if you want to turn your teacher into ascii art *winky face*)
+As the name suggests, this program converts image to ascii art. Uses [PIL](https://python-pillow.org/).
 
 It has two versions:
 * ITA_woarg.py (short for ImageToASCII without arguments) is simpler version, that asks for input.
